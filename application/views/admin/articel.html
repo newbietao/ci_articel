@@ -2,71 +2,33 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>articel</title>
-	<link rel="stylesheet" href="<?php echo base_url() ;?>/css/admin/public.css" />
-	<style>
-		span{
-			color:red;
-		}
-
-	</style>
-	<!-- <link rel="stylesheet" href="<?php echo base_url(); ?>css/admin/admin.css" /> -->
+	<title>Document</title>
+	<link rel="stylesheet" href="<?php echo base_url()?>/css/admin/public.css">
 </head>
 <body>
-	<form action="<?php echo site_url("admin/articel/send") ?>" method="POST" enctype="multipart/form-data">
-		<table class="table">
-			<tr >
-				<td class="th" colspan="10">
-					发表文章
-				</td>
-			</tr>
-			<tr>
-				<td>标题</td>
-				<td><input type="text" name="title" value="<?php echo set_value("title")?>"><!--保存原有内容-->
-					<?php echo form_error("title" ,"<span>","</span>") ?><!-- 输出错误信息 -->
-				</td>
-			</tr>
-			<tr>
-				<td>类型</td>
-				<td><input type="radio" name="type" value="0" <?php echo set_radio("type","0",TRUE)?>/>普通
-				<input type="radio" name="type" value="1" <?php echo set_radio("type","1")?>/>热门
-				</td>
-			</tr>
-			<tr>
-				<td>栏目</td>
-				<td>
-					<select name="cid" id="">
-						<option value="1"<?php echo set_select("cid","1",TRUE)?>>情感</option>
-						<option value="2"<?php echo set_select("cid","2")?>>生活</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td>略缩图</td>
-				<td>
-					<input type="file">
-				</td>
-			</tr>
-			<tr>
-				<td>摘要</td>
-				<td>
-					<textarea name="info" id="" style="width:550px; height:160px;"><?php echo set_value("info")?></textarea><?php echo form_error("info","<span>","</span>")?>
-				</td>
-			</tr>
-			<tr>
-				<td>内容</td>
-				<td>
-					<textarea name="contains" id="" style="width:550px; height:500px;">
-						<?php echo set_value("contains")?>
-					</textarea><?php echo form_error("contains","<span>","</span>")?>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="10">
-					<input type="submit" class="input_button" value="发布">
-				</td>
-			</tr>
-		</table>
-	</form>
+	<table class="table">
+		<tr>
+			<td class="th" colspan="10">查看文章</td>
+		</tr>
+		<tr>
+			<td>AID</td>
+			<td>文章标题</td>
+			<td>文章简介</td>
+			<td>文章内容</td>
+			<td>操作</td>
+		</tr>
+		<?php foreach($articel as $v){?>
+		<tr>
+			<td><?php echo $v["aid"] ?></td>
+			<td><?php echo $v["title"] ?></td>
+			<td><?php echo $v["info"] ?></td>
+			<td><?php echo $v["content"] ?></td>
+			<td>
+				[<a href="<?php echo site_url('admin/articel/edit_articel/'.$v['aid'])?>">编辑</a>]
+				[<a href="<?php echo site_url('admin/articel/del_articel/'.$v['aid'])?>">删除</a>]
+			</td>
+		</tr>
+		<?php } ?>
+	</table>
 </body>
 </html>

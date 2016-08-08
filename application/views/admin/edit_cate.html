@@ -11,7 +11,7 @@
 	</style>
 </head>
 <body>
-	<form action="<?php echo site_url("admin/category/edit_cate")?>" method="POST">
+	<form action="<?php echo site_url("admin/category/edit_cate1")?>" method="POST">
 		<table class="table">
 			<tr>
 				<td class="th" colspan="10">编辑栏目</td>
@@ -19,7 +19,8 @@
 			<tr>
 				<td>栏目名称</td>
 				<td>
-					<input type="text" name="cname" value="<?php echo $category[0]['cname'] ?>"><!-- <?php echo form_error("cname","<span>","</span>")?> -->
+					<input type="text" name="cname" value="<?php echo $category[0]['cname'] ?>">
+					<?php echo form_error("cname","<span>","</span>");?>
 				</td>
 			</tr>
 			<tr>

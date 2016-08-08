@@ -21,4 +21,13 @@
 		// p($data);die;
 		
 	}
+	public function update_cate($cid,$cname){
+		$result = $this->db->update('category',$cname,array('cid'=>$cid));
+		return $result;
+	}
+	public function del_cate($cid){
+		$this->db->where('cid',$cid);
+		$result = $this->db->delete('category');
+		return $result;
+	}
 }
