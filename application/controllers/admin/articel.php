@@ -21,8 +21,21 @@ class Articel extends CI_Controller {
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index(){
+
+		$this->load->library('pagination');//载入分页类
+		$prePage = 3;
+		$config['base_url'] = site_url('admin/articel/index');//控制器的路径
+		$config['total_rows'] = $this->db->count_all_results('articel');//需要分页所有行数
+		$config['per_page'] = $prePage;//设置每页显示几个
+		$config['uri_segment'] = 4;//url片段
+		$this->pagination->initialize($config);//载入配置
+		$data['links'] = $this->pagination->create_links();//创建连接
+		$offset = $this->uri->segment(4);//起始位置为第四个片段
+		$this->db->limit($prePage,$offset);//设置，每页显示几个，和起始位置
+
 		$this->load->model('articel_model','articel');
 		$data['articel'] = $this->articel->select();
+		// p($data['articel']);die;
 		$this->load->view('admin/articel.html',$data);
 	}
 	public function send_articel()

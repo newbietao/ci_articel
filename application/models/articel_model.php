@@ -5,7 +5,7 @@ class Articel_model extends CI_Model{
 		return $bool;
 	}
 	public function select(){
-		$data = $this->db->get('articel')->result_array();
+		$data = $this->db->select('aid,title,cname,info,time')->from('articel')->join('category','articel.cid=category.cid')->order_by('aid','asc')->get()->result_array();
 		return $data;
 	}
 	public function select_id($aid){

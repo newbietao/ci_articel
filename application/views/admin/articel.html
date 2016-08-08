@@ -14,7 +14,8 @@
 			<td>AID</td>
 			<td>文章标题</td>
 			<td>文章简介</td>
-			<td>文章内容</td>
+			<td>文章分类</td>
+			<td>文章时间</td>
 			<td>操作</td>
 		</tr>
 		<?php foreach($articel as $v){?>
@@ -22,7 +23,8 @@
 			<td><?php echo $v["aid"] ?></td>
 			<td><?php echo $v["title"] ?></td>
 			<td><?php echo $v["info"] ?></td>
-			<td><?php echo $v["content"] ?></td>
+			<td><?php echo $v["cname"] ?></td>
+			<td><?php echo $v["time"] ?></td>
 			<td>
 				[<a href="<?php echo site_url('admin/articel/edit_articel/'.$v['aid'])?>">编辑</a>]
 				[<a href="<?php echo site_url('admin/articel/del_articel/'.$v['aid'])?>">删除</a>]
@@ -30,5 +32,8 @@
 		</tr>
 		<?php } ?>
 	</table>
+	<div class="page">
+		<?php echo $links ?>
+	</div>
 </body>
 </html>
