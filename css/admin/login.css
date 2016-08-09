@@ -121,7 +121,11 @@ li{
 	height: 19px;
 	width: 45px;
 }
-
+#divBox .captcha{
+	position: absolute;
+	right:250px;
+	bottom:50px;
+}
 
 /*提示信息*/
 ul#peo{
