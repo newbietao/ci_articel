@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Admin extends CI_Controller {
+class Admin extends MY_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -27,7 +27,26 @@ class Admin extends CI_Controller {
 
 		$this->load->view("admin/copy.html");
 	}
-
+	public function change(){
+		$this->load->view('admin/change_passwd.html');
+	}
+	public function do_change(){
+		$passwd = $this->input->post('passwd');
+		$username = $this->session->userdata('username');
+		$this->load->model('admin_model','admin');
+		$data = $this->admin->check($username);
+		if($data[0]['passwd'] != $passwd) error("原始密码错误");
+		$passwdf = $this->input->post('passwdf');
+		$passwds = $this->input->post('passwds');
+		if($passwds != $passwdf) error("两次密码不一样");
+		$uid = $this->session->userdata('uid');
+		$data = array(
+			'passwd'=>$passwdf
+		);
+		$bool = $this->admin->change($uid,$data);
+		// var_dump($bool);die;
+		success('admin/admin/copy','修改成功');
+	}
 }
 
 /* End of file welcome.php */

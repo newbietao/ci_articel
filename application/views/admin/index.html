@@ -19,16 +19,16 @@
 			<p class="adm">
 				<span>管理员：</span>
 				<span class="adm_pic">&nbsp&nbsp&nbsp&nbsp</span>
-				<span class="adm_people">[houdunwang]</span>
+				<span class="adm_people"><?php echo $this->session->userdata('username')?></span>
 			</p>
 			<p class="now_time">
-				今天是：2013.7.13 
+				今天是：<?php echo date("Y")."-".date('m')."-".date('d');?> 
 				您的当前位置是：
 				<span>首页</span>
 			</p>
 			<p class="out">
 				<span class="out_bg">&nbsp&nbsp&nbsp&nbsp</span>&nbsp
-				<a href="" target="_self">退出</a>
+				<a href="<?php echo site_url('admin/login/login_out')?>" target="_self">退出</a>
 			</p>
 		</div>
 	</div>
@@ -70,17 +70,17 @@
 				<div class="text">
 					<ul class="con">
 				        <li class="nav_u">
-				        	<a href="" class="pos">前台首页</a>				        	
+				        	<a href="<?php echo site_url('index/mycon/index')?>" class="pos">前台首页</a>				        	
 				        </li> 
 				    </ul>
 					<ul class="con">
 				        <li class="nav_u">
-				        	<a href="" class="pos">系统信息</a>				        	
+				        	<a href="<?php echo site_url('admin/admin/copy')?>" class="pos">系统信息</a>				        	
 				        </li> 
 				    </ul>
 				    <ul class="con">
 				        <li class="nav_u">
-				        	<a href="" class="pos">密码修改</a>				        	
+				        	<a href="<?php echo site_url('admin/admin/change')?>" class="pos">用户修改</a>				        	
 				        </li> 
 				    </ul>
 				</div>

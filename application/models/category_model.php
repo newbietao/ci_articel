@@ -30,4 +30,9 @@
 		$result = $this->db->delete('category');
 		return $result;
 	}
+	public function limit_check($num){//获取数据库数据
+		$data_array = $this->db->limit($num)->get("category")->result_array();//返回值是一个数组
+		// $data = $this->db->get("category")->result();//返回值是一个对象
+		return $data_array;
+	}
 }

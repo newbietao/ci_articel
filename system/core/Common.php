@@ -587,7 +587,7 @@ function success($url,$msg){
  * @return [type]      [description]
  */
 function error($msg){
-	header("Content-Type:text/html;charset=utf-8");
-	echo "<script type='text/javascript'>alert($msg);window.history.back();</script>";
+	header('Content-Type:text/html;charset=utf-8');
+	echo "<script type='text/javascript'>alert('$msg');window.history.back();</script>";
 	die;
 }

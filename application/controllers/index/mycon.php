@@ -19,8 +19,15 @@ class Mycon extends CI_Controller {
 	 */
 	public function index()
 	{	
-
-		$this->load->view("index/index.html");
+		$this->load->model("category_model",'category');
+		$data['arr'] = $this->category->limit_check(4);
+		// var_dump($data);die;
+		$this->load->model("articel_model",'articel');
+		$data['arr1'] = $this->articel->check();
+		// echo "<pre>";
+		//  var_dump($data);
+		//  echo "</pre>";die;
+		$this->load->view("index/index.html",$data);
 	}
 	public function category()
 	{	

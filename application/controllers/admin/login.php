@@ -72,14 +72,40 @@ class Login extends CI_Controller {
 	}
 	public function login_in(){
 		$code = $this->input->post('captcha');
+		$username = $this->input->post('username');
+		$passwd = $this->input->post('pass');
 		if(!isset($_SESSION)){
 		 	session_start();
 		 }
-		 // p($_SESSION['code']);die;
-		 // if(strtoupper($code) != $_SESSION['code']){
-		 // 	error('验证码错误');
-		 // }
-		 // echo 1;die;
+		 if(strtoupper($code) == $_SESSION['code']){
+		 	$username = $this->input->post('username');
+		 	$this->load->model('admin_model','admin');
+		 	$bool = $this->admin->check($username);
+		 	// var_dump($bool);die;
+		 	if(!$bool || $bool[0]['passwd'] != $passwd){
+		 		error("用户名或密码错误");
+		 	}else{
+		 		if(!isset($_SESSION)){
+		 			session_start();
+		 		}
+		 		// $_SESSION['username'] = $username;
+		 		// var_dump($_SESSION['username']);die;
+		 		$session = array(//定义一个数组
+		 			'username'=>$username,
+		 			'uid'=>$bool[0]['uid'],
+		 			'logintime'=>time()
+
+		 		);
+		 		$this->session->set_userdata($session);//插入到，session
+		 		success("admin/admin","登录成功");
+		 	}
+		 }else{
+		 	error("验证码错误");
+		 }
+	}
+	public function login_out(){
+		$this->session->sess_destroy();
+		success('admin/login/index','退出成功');
 	}
 }
 

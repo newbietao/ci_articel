@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Articel extends CI_Controller {
+class Articel extends MY_Controller {
 // 	function __construct(){
 // 		parent::__construct();
 // 	}
@@ -84,10 +84,10 @@ class Articel extends CI_Controller {
 		$aid = $this->uri->segment(4);
 		// echo $aid;die;
 		$this->load->model('articel_model','articel');
-		$this->load->model('category_model','category');
+		$this->load->model('category_model','cate');
 		$data['content'] = $this->articel->select_id($aid);
-		$data['content'] = $this->articel->select_id($aid);
-		// p($data);die();
+		$data['id'] = $aid;
+		$data['cid'] = $this->cate->check();
 		$this->load->helper("form");
 		$this->load->view("admin/edit_articel.html",$data);
 	}
@@ -96,10 +96,28 @@ class Articel extends CI_Controller {
 		$this->load->library("form_validation");//载入表单验证类。
 		$status = $this->form_validation->run("articel");//表单验证返回一个bool值。
 		if($status){
-			echo "数据库操作";
+			$data = array(
+				'title'=>$this->input->post('title'),
+				'content'=>$this->input->post('contains'),
+				'time'=>date('Y')."-".date('m')."-".date('d'),
+				'thumb'=>"",
+				'type'=>$this->input->post('type'),
+				'info'=>$this->input->post('info'),
+				'cid'=>$this->input->post('cid'),
+
+			);
+
+			$id = $this->input->post('aid');
+			// var_dump($id);die;
+			$this->load->model('articel_model','articel');
+			$bool = $this->articel->update($id,$data);
+			if($bool){
+				 success("admin/articel/index","编辑成功");
+			}
 		}else{
 			$this->load->helper("form");
-			$this->load->view("admin/edit_articel.html");
+			//$this->load->view("admin/edit_articel.html");
+			error('填写错误');
 		}
 	}
 	public function del_articel(){

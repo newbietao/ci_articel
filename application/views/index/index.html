@@ -16,9 +16,9 @@
 			
 		</div>
 		<div class='navigation'>
-			<a href="<?php echo site_url().'/index/mycon/index'; ?>">首页</a>
-			<a href="<?php echo site_url().'/index/mycon/category'; ?>">青春</a>
-			<a href="<?php echo site_url().'/index/mycon/details'; ?>">阅读</a>
+			<?php foreach($arr as $v){?>
+				<a href="<?php echo site_url().'/index/mycon/index'; ?>"><?php echo $v['cname'];?></a>
+			<?php } ?>
 			<a href="">更多</a>
 		</div>
 	</div>
@@ -31,6 +31,13 @@
 					<h2>最新文章..</h2>
 				</div>
 				<ul>
+					<!-- <?php 
+
+					echo "<pre>";
+					var_dump($arr1);
+					echo "</pre>";
+					?> -->
+					<?php foreach($arr1['arr'] as $v){?>
 					<li>
 						<div class='post-image'>
 							<span>
@@ -38,32 +45,11 @@
 							</span>	
 						</div>	
 						<div class='post-content'>
-							<h3>从相见恨晚到不如不见</h3>
-							<p>花非花，雾非雾。夜半来，天明去。来如春梦不多时，去似朝云无觅处。浮华一生，淡忘一季。 空有回忆，打乱缠绵。 笑容不见，落寞万千。 弦，思华年。 那些年华，恍然如梦。 亦如，流水，一去不返。 不泣离别，不诉终殇。</p>
+							<h3><?php echo $v['title']?></h3>
+							<p><?php echo $v['info']?></p>
 						</div>
 					</li>
-					<li>
-						<div class='post-image'>
-							<span>
-								<img width="" src="http://www.fqpai.com/wp-content/themes/fqp-three/includes/timthumb.php?src=/wp-content/uploads/2013/10/22221.jpg&h=174&w=294&zc=1&q=100" />
-							</span>	
-						</div>	
-						<div class='post-content'>
-							<h3>从相见恨晚到不如不见</h3>
-							<p>花非花，雾非雾。夜半来，天明去。来如春梦不多时，去似朝云无觅处。浮华一生，淡忘一季。 空有回忆，打乱缠绵。 笑容不见，落寞万千。 弦，思华年。 那些年华，恍然如梦。 亦如，流水，一去不返。 不泣离别，不诉终殇。</p>
-						</div>
-					</li>
-					<li>
-						<div class='post-image'>
-							<span>
-								<img width="" src="http://www.fqpai.com/wp-content/themes/fqp-three/includes/timthumb.php?src=/wp-content/uploads/2013/10/22221.jpg&h=174&w=294&zc=1&q=100" />
-							</span>	
-						</div>	
-						<div class='post-content'>
-							<h3>从相见恨晚到不如不见</h3>
-							<p>花非花，雾非雾。夜半来，天明去。来如春梦不多时，去似朝云无觅处。浮华一生，淡忘一季。 空有回忆，打乱缠绵。 笑容不见，落寞万千。 弦，思华年。 那些年华，恍然如梦。 亦如，流水，一去不返。 不泣离别，不诉终殇。</p>
-						</div>
-					</li>
+					<?php }?>
 				</ul>
 			</div>
 			<div  class='list'>
@@ -71,6 +57,7 @@
 					<h2>热门文章..</h2>
 				</div>
 				<ul>
+					<?php foreach($arr1['hot'] as $v){?>
 					<li>
 						<div class='post-image'>
 							<span>
@@ -78,32 +65,11 @@
 							</span>	
 						</div>	
 						<div class='post-content'>
-							<h3>从相见恨晚到不如不见</h3>
-							<p>花非花，雾非雾。夜半来，天明去。来如春梦不多时，去似朝云无觅处。浮华一生，淡忘一季。 空有回忆，打乱缠绵。 笑容不见，落寞万千。 弦，思华年。 那些年华，恍然如梦。 亦如，流水，一去不返。 不泣离别，不诉终殇。</p>
+							<h3><?php echo $v['title']?></h3>
+							<p><?php echo $v['info']?></p>
 						</div>
 					</li>
-					<li>
-						<div class='post-image'>
-							<span>
-								<img width="" src="http://www.fqpai.com/wp-content/themes/fqp-three/includes/timthumb.php?src=/wp-content/uploads/2013/10/22221.jpg&h=174&w=294&zc=1&q=100" />
-							</span>	
-						</div>	
-						<div class='post-content'>
-							<h3>从相见恨晚到不如不见</h3>
-							<p>花非花，雾非雾。夜半来，天明去。来如春梦不多时，去似朝云无觅处。浮华一生，淡忘一季。 空有回忆，打乱缠绵。 笑容不见，落寞万千。 弦，思华年。 那些年华，恍然如梦。 亦如，流水，一去不返。 不泣离别，不诉终殇。</p>
-						</div>
-					</li>
-					<li>
-						<div class='post-image'>
-							<span>
-								<img width="" src="http://www.fqpai.com/wp-content/themes/fqp-three/includes/timthumb.php?src=/wp-content/uploads/2013/10/22221.jpg&h=174&w=294&zc=1&q=100" />
-							</span>	
-						</div>	
-						<div class='post-content'>
-							<h3>从相见恨晚到不如不见</h3>
-							<p>花非花，雾非雾。夜半来，天明去。来如春梦不多时，去似朝云无觅处。浮华一生，淡忘一季。 空有回忆，打乱缠绵。 笑容不见，落寞万千。 弦，思华年。 那些年华，恍然如梦。 亦如，流水，一去不返。 不泣离别，不诉终殇。</p>
-						</div>
-					</li>
+					<?php }?>
 				</ul>
 			</div>
 		</div>
